@@ -1,4 +1,4 @@
-# FDSerialArchiver - FDSerialUnarchiver
+# FDSerialArchiver
 
 ## Overview
 
@@ -17,9 +17,9 @@ More importantly, I felt like it would be a good exercise and a nice way to get 
 ## Usage
 
 Using `FDSerialArchiver` is as simple as using the `NSCoding` protocol, but without the keyed part.
-The classes you are used to using (`NSArray`, `NSNumber`, `NSString`, *etc*) all support 
+The classes you are used to using (`NSArray`, `NSNumber`, `NSString`, *etc* ) all support unkeyed archiving.
 
-For coding, you will need to implement the `encodeWithCoder:` method on your custom classes, for instance: 
+For your custom classes, you will need to implement the `encodeWithCoder:` method, for instance: 
 
     -(void)encodeWithCoder:(NSCoder *)aCoder
     {
@@ -57,14 +57,15 @@ And simply calling the unarchive method
  Before 0.1
  - Object referencing
  - ARC bug
- - Performance chart
- - Unit testing
+ - Archive versionning
+ 
  Before 0.2
  - More general C-style array encoding
  - 32-64 bit archive compatibility 
- Before 1.0
- - Versioning
- 
+ - Performance chart
+ - Unit testing
+ - Endianness
+   
 ## License
 
 `FDSerialArchiver` is distributed using the MIT license. See the `LICENSE` file for detailed information
