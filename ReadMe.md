@@ -60,7 +60,6 @@ And simply calling the unarchive method
  - Archive versionning
  
  Before 0.2
- - More general C-style array encoding
  - 32-64 bit archive compatibility 
  - Performance chart
  - Unit testing

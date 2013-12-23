@@ -7,7 +7,7 @@
 //
 
 #import "FDSerialArchiver.h"
-
+#import "FDSerialCommons.h"
 
 @interface FDSerialArchiver (){
     NSMutableData *_data;   // Buffer containing the data written so far
@@ -44,61 +44,6 @@
 - (void)dealloc
 {
 }
-
-#pragma mark - Sizes
-
--(NSUInteger)_sizeOfType:(const char *)type
-{
-    switch(*type){
-            // char
-        case 'c':
-        case 'C':
-            return sizeof(char);
-            
-            // short
-        case 's':
-        case 'S':
-            return sizeof(short);
-            
-            // int
-        case 'i':
-        case 'I':
-            return sizeof(int);
-            
-            // long
-        case 'l':
-        case 'L':
-            return sizeof(long);
-            
-            // long long
-        case 'q':
-        case 'Q':
-            return sizeof(long long);
-            
-            // float
-        case 'f':
-            return sizeof(float);
-            
-            // double
-        case 'd':
-            return sizeof(double);
-            
-            // Array of primitive type
-        case '[':
-        case '*':
-        case '#':
-        case ':':
-        case '{':
-        case '(':
-        case 'b':
-        case '^':
-        case '?':
-        default:
-            return -1;
-            
-    }
-}
-
 
 #pragma mark - Core Encoding
 
@@ -174,26 +119,26 @@
 -(void)_appendArrayOfType:(const char*)type at:(const void *)addr
 {
     const char *tmp = type+1; // (skip [
-    NSUInteger size = 0;
     
-    // Get size of array from type
-    while (*tmp >= '0' && *tmp <= '9')
+    // Get number of elements
+    NSUInteger length = parseInt(&tmp);
+    
+    // Get size of each element
+    NSUInteger size = sizeOfType(tmp);
+
+    // We don't know the size of that particular element
+    if (length == NSUIntegerMax)
     {
-        size = (size*10)+(*tmp-'0');
-        ++tmp;
-    }
-    
-    // Get length of each element
-    NSUInteger length = [self _sizeOfType:tmp];
-    if (length<=0)  // We only encode arrays of primitive types right now
         [self _cannotEncodeType:tmp];
+        return;
+    }
     
     // Encode array
     const char *src = (const char*)addr;
-    for (NSUInteger i = 0; i < size; ++i)
+    for (NSUInteger i = 0; i < length; ++i)
     {
         [self encodeValueOfObjCType:tmp at:src];
-        src += length;
+        src += size;
     }
     
 }
@@ -206,7 +151,6 @@
                                    reason:[NSString stringWithFormat:@"ISUBinaryArchiver cannot encode type %s",type]
                                  userInfo:nil];
 }
-
 
 -(void)encodeValueOfObjCType:(const char *)type at:(const void *)addr
 {
@@ -230,7 +174,7 @@
         case 'f':
             // double
         case 'd':
-            [self _appendBytes:addr length:[self _sizeOfType:type]];
+            [self _appendBytes:addr length:sizeOfType(type)];
             break;
             
             // Fixed length array
@@ -265,7 +209,6 @@
     }
     
 }
-
 
 -(void)encodeObject:(id)object
 {

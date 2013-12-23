@@ -7,6 +7,7 @@
 //
 
 #import "FDSerialUnarchiver.h"
+#import "FDSerialCommons.h"
 
 @interface FDSerialUnarchiver (){
     NSData *_data;              // Reference to the NSData to read
@@ -39,61 +40,6 @@
 
 -(void)dealloc
 {
-}
-
-#pragma mark - Sizes
-
--(NSUInteger)_sizeOfType:(const char *)type
-{
-    switch(*type){
-            // char
-        case 'c':
-        case 'C':
-            return sizeof(char);
-            
-            // short
-        case 's':
-        case 'S':
-            return sizeof(short);
-            
-            // int
-        case 'i':
-        case 'I':
-            return sizeof(int);
-            
-            // long
-        case 'l':
-        case 'L':
-            return sizeof(long);
-            
-            // long long
-        case 'q':
-        case 'Q':
-            return sizeof(long long);
-            
-            // float
-        case 'f':
-            return sizeof(float);
-            
-            // double
-        case 'd':
-            return sizeof(double);
-            
-            
-            // Array of primitive type
-        case '[':
-        case '*':
-        case '#':
-        case ':':
-        case '{':
-        case '(':
-        case 'b':
-        case '^':
-        case '?':
-        default:
-            return -1;
-            
-    }
 }
 
 #pragma mark - Core decoding
@@ -184,26 +130,26 @@
 -(void)_extractArrayOfType:(const char*)type to:(void *)addr
 {
     const char *tmp = type+1; // (skip [
-    NSUInteger size = 0;
+
+    // Get number of elements
+    NSUInteger length = parseInt(&tmp);
     
-    // Get size of array from type
-    while (*tmp >= '0' && *tmp <= '9')
+    // Get size of each element
+    NSUInteger size = sizeOfType(tmp);
+    
+    // We don't know the size of that particular element
+    if (length == NSUIntegerMax)
     {
-        size = (size*10)+(*tmp-'0');
-        ++tmp;
-    }
-    
-    // Get length of each element
-    NSUInteger lenght = [self _sizeOfType:tmp];
-    if (lenght<=0)  // We only encode arrays of primitive types right now
         [self _cannotDecodeType:tmp];
-    
-    // Encode array
+        return;
+    }
+
+    // Decode array
     char *dst = (char*)addr;
-    for (NSUInteger i = 0; i < size; ++i)
+    for (NSUInteger i = 0; i < length; ++i)
     {
         [self decodeValueOfObjCType:tmp at:dst];
-        dst += lenght;
+        dst += size;
     }
     
 }
@@ -241,7 +187,7 @@
         case 'f':
             // double
         case 'd':
-            [self _extractBytesTo:data length:[self _sizeOfType:type]];
+            [self _extractBytesTo:data length:sizeOfType(type)];
             break;
             
             // Fixed length array
