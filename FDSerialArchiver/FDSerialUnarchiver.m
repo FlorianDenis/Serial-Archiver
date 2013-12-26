@@ -87,7 +87,7 @@
 {
     
     // Lookup class reference
-    id reference = (__bridge id)[self _extractReference];
+    __unsafe_unretained id reference = (__bridge id)[self _extractReference];
     
     // NSObject is always nil
     if (!reference)
@@ -113,7 +113,7 @@
 
 -(id)_extractObject
 {
-    id objectReference = [self _extractReference];
+    __unsafe_unretained id objectReference = (__bridge id)[self _extractReference];
     
     if (!objectReference)
     {
