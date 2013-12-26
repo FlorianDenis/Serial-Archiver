@@ -9,7 +9,7 @@
 #ifndef FDSerialArchiverDemo_FDSerialCommons_h
 #define FDSerialArchiverDemo_FDSerialCommons_h
 
-// Parse an integer and locate the pointer after the
+// Parse a positive integer and locate the pointer to the first non-figure character in the string
 static inline NSUInteger parseInt(const char **tmp)
 {
 

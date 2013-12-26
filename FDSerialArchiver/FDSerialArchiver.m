@@ -35,8 +35,8 @@
         _position = 0;
 
         // hashtables filled during encoding used to keep info on what was already encoded
-        _classes = [NSHashTable weakObjectsHashTable];      // class name will be encoded on the first time the class is met
-        _objects = [NSHashTable weakObjectsHashTable];      // object will be encoded on the first time the object is met
+        _classes = [NSHashTable hashTableWithOptions:NSHashTableStrongMemory];      // class name will be encoded on the first time the class is met
+        _objects = [NSHashTable hashTableWithOptions:NSHashTableStrongMemory];      // object will be encoded on the first time the object is met
     }
     return self;
 }
@@ -101,19 +101,21 @@
 
 -(void)_appendObject:(const id)object
 {
-    // References are saved
-    // Although we don't yet handle relationships between objects (we could do it the exact same way we do for classes)
-    // at least it is useful to determine whether object was nil or not
+    // Append object reference
     [self _appendReference:(__bridge const void *)(object)];
     
+    // If object was nil, no need to go forward
     if (!object)
         return;
     
-    // TODO: check the _objects NSHashTable
-    
-    [self _appendClass:[object classForCoder]];
-    [object encodeWithCoder:self];
-    
+    // If this object was not encoded yet, encode it and its class
+    if (![_objects containsObject:object])
+    {
+        [_objects addObject:object];
+        [self _appendClass:[object classForCoder]];
+        [object encodeWithCoder:self];
+    }
+
 }
 
 -(void)_appendArrayOfType:(const char*)type at:(const void *)addr

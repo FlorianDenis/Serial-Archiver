@@ -32,8 +32,8 @@
         _bytes = [data bytes];
         
         // Keep track of reference->object mapping
-        _classes = [NSMapTable weakToWeakObjectsMapTable];
-        _objects = [NSMapTable weakToWeakObjectsMapTable];
+        _classes = [NSMapTable weakToStrongObjectsMapTable];
+        _objects = [NSMapTable weakToStrongObjectsMapTable];
     }
     return self;
 }
@@ -120,10 +120,17 @@
         return nil;
     }
     
-    Class objectClass = [self _extractClass];
-    id object = [[objectClass alloc] initWithCoder:self];
+    // Do we already know that one ?
+    if (![_objects objectForKey:objectReference])
+    {
+        // If not, then the class & enconding should follow
+        Class objectClass = [self _extractClass];
+        id object = [[objectClass alloc] initWithCoder:self];
+        
+        [_objects setObject:object forKey:objectReference];
+    }
     
-    return object;
+    return [_objects objectForKey:objectReference];
     
 }
 
