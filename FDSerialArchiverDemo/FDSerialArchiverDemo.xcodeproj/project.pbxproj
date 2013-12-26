@@ -13,24 +13,10 @@
 		1A27E61818686CFE007F6EA7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A27E61718686CFE007F6EA7 /* main.m */; };
 		1A27E61C18686CFE007F6EA7 /* FDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A27E61B18686CFE007F6EA7 /* FDAppDelegate.m */; };
 		1A27E61E18686CFE007F6EA7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A27E61D18686CFE007F6EA7 /* Images.xcassets */; };
-		1A27E62518686CFE007F6EA7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A27E62418686CFE007F6EA7 /* XCTest.framework */; };
-		1A27E62618686CFE007F6EA7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A27E60B18686CFE007F6EA7 /* Foundation.framework */; };
-		1A27E62718686CFE007F6EA7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A27E60F18686CFE007F6EA7 /* UIKit.framework */; };
-		1A27E63118686CFE007F6EA7 /* FDSerialArchiverDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A27E63018686CFE007F6EA7 /* FDSerialArchiverDemoTests.m */; };
 		1A27E63D18686D40007F6EA7 /* FDSerialArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A27E63C18686D40007F6EA7 /* FDSerialArchiver.m */; };
 		1A27E64018686D50007F6EA7 /* FDSerialUnarchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A27E63F18686D50007F6EA7 /* FDSerialUnarchiver.m */; };
 		1A27E64518689B45007F6EA7 /* FDArchivingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A27E64418689B45007F6EA7 /* FDArchivingController.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		1A27E62818686CFE007F6EA7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1A27E60018686CFE007F6EA7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1A27E60718686CFE007F6EA7;
-			remoteInfo = FDSerialArchiverDemo;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1A0231271868A6840048C5DC /* FDSerialCommons.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDSerialCommons.h; sourceTree = "<group>"; };
@@ -44,10 +30,6 @@
 		1A27E61A18686CFE007F6EA7 /* FDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FDAppDelegate.h; sourceTree = "<group>"; };
 		1A27E61B18686CFE007F6EA7 /* FDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FDAppDelegate.m; sourceTree = "<group>"; };
 		1A27E61D18686CFE007F6EA7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		1A27E62318686CFE007F6EA7 /* FDSerialArchiverDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FDSerialArchiverDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1A27E62418686CFE007F6EA7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		1A27E62C18686CFE007F6EA7 /* FDSerialArchiverDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FDSerialArchiverDemoTests-Info.plist"; sourceTree = "<group>"; };
-		1A27E63018686CFE007F6EA7 /* FDSerialArchiverDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FDSerialArchiverDemoTests.m; sourceTree = "<group>"; };
 		1A27E63B18686D40007F6EA7 /* FDSerialArchiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDSerialArchiver.h; sourceTree = "<group>"; };
 		1A27E63C18686D40007F6EA7 /* FDSerialArchiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FDSerialArchiver.m; sourceTree = "<group>"; };
 		1A27E63E18686D50007F6EA7 /* FDSerialUnarchiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FDSerialUnarchiver.h; sourceTree = "<group>"; };
@@ -67,16 +49,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1A27E62018686CFE007F6EA7 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1A27E62518686CFE007F6EA7 /* XCTest.framework in Frameworks */,
-				1A27E62718686CFE007F6EA7 /* UIKit.framework in Frameworks */,
-				1A27E62618686CFE007F6EA7 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -85,7 +57,6 @@
 			children = (
 				1A27E63A18686D10007F6EA7 /* FDSerialArchiver */,
 				1A27E61118686CFE007F6EA7 /* FDSerialArchiverDemo */,
-				1A27E62A18686CFE007F6EA7 /* FDSerialArchiverDemoTests */,
 				1A27E60A18686CFE007F6EA7 /* Frameworks */,
 				1A27E60918686CFE007F6EA7 /* Products */,
 			);
@@ -95,7 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				1A27E60818686CFE007F6EA7 /* FDSerialArchiverDemo.app */,
-				1A27E62318686CFE007F6EA7 /* FDSerialArchiverDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -106,7 +76,6 @@
 				1A27E60D18686CFE007F6EA7 /* CoreGraphics.framework */,
 				1A27E60B18686CFE007F6EA7 /* Foundation.framework */,
 				1A27E60F18686CFE007F6EA7 /* UIKit.framework */,
-				1A27E62418686CFE007F6EA7 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -129,23 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				1A27E61318686CFE007F6EA7 /* FDSerialArchiverDemo-Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		1A27E62A18686CFE007F6EA7 /* FDSerialArchiverDemoTests */ = {
-			isa = PBXGroup;
-			children = (
-				1A27E63018686CFE007F6EA7 /* FDSerialArchiverDemoTests.m */,
-				1A27E62B18686CFE007F6EA7 /* Supporting Files */,
-			);
-			path = FDSerialArchiverDemoTests;
-			sourceTree = "<group>";
-		};
-		1A27E62B18686CFE007F6EA7 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				1A27E62C18686CFE007F6EA7 /* FDSerialArchiverDemoTests-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -192,24 +144,6 @@
 			productReference = 1A27E60818686CFE007F6EA7 /* FDSerialArchiverDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1A27E62218686CFE007F6EA7 /* FDSerialArchiverDemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1A27E63718686CFE007F6EA7 /* Build configuration list for PBXNativeTarget "FDSerialArchiverDemoTests" */;
-			buildPhases = (
-				1A27E61F18686CFE007F6EA7 /* Sources */,
-				1A27E62018686CFE007F6EA7 /* Frameworks */,
-				1A27E62118686CFE007F6EA7 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1A27E62918686CFE007F6EA7 /* PBXTargetDependency */,
-			);
-			name = FDSerialArchiverDemoTests;
-			productName = FDSerialArchiverDemoTests;
-			productReference = 1A27E62318686CFE007F6EA7 /* FDSerialArchiverDemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -219,11 +153,6 @@
 				CLASSPREFIX = FD;
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Florian Denis";
-				TargetAttributes = {
-					1A27E62218686CFE007F6EA7 = {
-						TestTargetID = 1A27E60718686CFE007F6EA7;
-					};
-				};
 			};
 			buildConfigurationList = 1A27E60318686CFE007F6EA7 /* Build configuration list for PBXProject "FDSerialArchiverDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -238,7 +167,6 @@
 			projectRoot = "";
 			targets = (
 				1A27E60718686CFE007F6EA7 /* FDSerialArchiverDemo */,
-				1A27E62218686CFE007F6EA7 /* FDSerialArchiverDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -249,13 +177,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1A27E61E18686CFE007F6EA7 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1A27E62118686CFE007F6EA7 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,23 +195,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1A27E61F18686CFE007F6EA7 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1A27E63118686CFE007F6EA7 /* FDSerialArchiverDemoTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		1A27E62918686CFE007F6EA7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1A27E60718686CFE007F6EA7 /* FDSerialArchiverDemo */;
-			targetProxy = 1A27E62818686CFE007F6EA7 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1A27E63218686CFE007F6EA7 /* Debug */ = {
@@ -397,48 +302,6 @@
 			};
 			name = Release;
 		};
-		1A27E63818686CFE007F6EA7 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FDSerialArchiverDemo.app/FDSerialArchiverDemo";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FDSerialArchiverDemo/FDSerialArchiverDemo-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "FDSerialArchiverDemoTests/FDSerialArchiverDemoTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		1A27E63918686CFE007F6EA7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FDSerialArchiverDemo.app/FDSerialArchiverDemo";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "FDSerialArchiverDemo/FDSerialArchiverDemo-Prefix.pch";
-				INFOPLIST_FILE = "FDSerialArchiverDemoTests/FDSerialArchiverDemoTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -456,15 +319,6 @@
 			buildConfigurations = (
 				1A27E63518686CFE007F6EA7 /* Debug */,
 				1A27E63618686CFE007F6EA7 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1A27E63718686CFE007F6EA7 /* Build configuration list for PBXNativeTarget "FDSerialArchiverDemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1A27E63818686CFE007F6EA7 /* Debug */,
-				1A27E63918686CFE007F6EA7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

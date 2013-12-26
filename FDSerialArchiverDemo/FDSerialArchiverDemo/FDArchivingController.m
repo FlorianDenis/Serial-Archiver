@@ -11,14 +11,6 @@
 #import "FDSerialArchiver.h"
 #import "FDSerialUnarchiver.h"
 
-#define TIME(x,y)                                                               \
-    NSDate *start = [NSDate date];                                              \
-    x;                                                                          \
-    NSDate *finish = [NSDate date];                                             \
-    NSTimeInterval executionTime = [finish timeIntervalSinceDate:start];        \
-    NSLog(@"%@ = %fs", y, executionTime);
-
-
 @interface FDMockObject : NSObject <NSCoding> {
     int i1, i2;
     char *c1;
@@ -118,11 +110,7 @@
 {
     FDMockObject *obj = [[FDMockObject alloc] init];
     
-
-    TIME(
-         NSData *data = [FDSerialArchiver archivedDataWithRootObject:obj],
-         @"Archiving"
-    );
+    NSData *data = [FDSerialArchiver archivedDataWithRootObject:obj];
     
     NSString *tempFile = [NSTemporaryDirectory() stringByAppendingPathComponent:@"archive"];
     [data writeToFile:tempFile atomically:YES];
@@ -135,10 +123,8 @@
     NSString *tempFile = [NSTemporaryDirectory() stringByAppendingPathComponent:@"archive"];
     NSData *data = [NSData dataWithContentsOfFile:tempFile];
     
-    TIME(
-         FDMockObject *obj = [FDSerialUnarchiver unarchiveObjectWithData:data],
-         @"Unarching"
-    );
+
+    FDMockObject *obj = [FDSerialUnarchiver unarchiveObjectWithData:data];
     
     NSLog(@"%@",obj);
     
