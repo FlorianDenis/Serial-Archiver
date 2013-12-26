@@ -12,8 +12,6 @@ In opposition to `NSKeyedArchiver`, `FDSerialArchiver` does not support keyed ar
 I started experimenting with serial archiving because sometimes, this kind of flexibility is overkill. You might want to serialize very lightweight, straightforward pieces of data that will not be subject to change in the future. The flexibility of `NSKeyedArchiver` results in speed and space compromises, and unfortunately `NSArchiver` is deprecated on OS X since 10.2, and AFAIK never made it to iOS. I was curious to see what kind of performances you can get by using more basic archiving techniques.
 More importantly, I felt like it would be a good exercise and a nice way to get more acquainted with `NSCoder`. 
 
-## Performance
-
 ## Usage
 
 Using `FDSerialArchiver` is as simple as using the `NSCoding` protocol, but without the keyed part.
@@ -50,19 +48,17 @@ And simply calling the unarchive method
 
     decodedObject = [ISUBinaryUnarchiver unarchiveObjectWithData:data];
 
-    
+## Performance
 
 ## ToDo
 
  Before 0.1
- - Object referencing
  - ARC bug
  - Archive versionning
  
  Before 0.2
  - 32-64 bit archive compatibility 
  - Performance chart
- - Unit testing
  - Endianness
    
 ## License
