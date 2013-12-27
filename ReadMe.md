@@ -53,10 +53,12 @@ And simply calling the unarchive method
 ## ToDo
 
  Before 0.1
+ 
  - ARC bug
  - Archive versionning
  
  Before 0.2
+ 
  - 32-64 bit archive compatibility 
  - Performance chart
  - Endianness

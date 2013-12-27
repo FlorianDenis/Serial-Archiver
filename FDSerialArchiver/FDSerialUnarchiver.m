@@ -9,6 +9,11 @@
 #import "FDSerialUnarchiver.h"
 #import "FDSerialCommons.h"
 
+#if !__has_feature(objc_arc)
+#error FDSerialArchiver needs ARC
+#endif
+
+
 @interface FDSerialUnarchiver (){
     NSData *_data;              // Reference to the NSData to read
     const void *_bytes;         // Pointer to the current position in the NSData buffer

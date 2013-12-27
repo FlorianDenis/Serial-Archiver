@@ -9,6 +9,11 @@
 #import "FDSerialArchiver.h"
 #import "FDSerialCommons.h"
 
+#if !__has_feature(objc_arc)
+#error FDSerialArchiver needs ARC
+#endif
+
+
 @interface FDSerialArchiver (){
     NSMutableData *_data;   // Buffer containing the data written so far
     
