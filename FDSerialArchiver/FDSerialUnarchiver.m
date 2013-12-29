@@ -268,7 +268,8 @@
 
 -(NSInteger)versionForClassName:(NSString *)className
 {
-    return [NSClassFromString(className) version];
+    Class class = NSClassFromString(className);
+    return class ? [class version] : NSNotFound;
 }
 
 
