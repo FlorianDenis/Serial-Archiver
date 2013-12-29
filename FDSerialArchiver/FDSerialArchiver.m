@@ -134,7 +134,7 @@
     NSUInteger size = sizeOfType(tmp);
 
     // We don't know the size of that particular element
-    if (length == NSUIntegerMax)
+    if (length == FDUnknownSize)
     {
         [self _cannotEncodeType:tmp];
         return;

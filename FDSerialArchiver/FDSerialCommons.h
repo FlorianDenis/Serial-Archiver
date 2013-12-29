@@ -9,6 +9,11 @@
 #ifndef FDSerialArchiverDemo_FDSerialCommons_h
 #define FDSerialArchiverDemo_FDSerialCommons_h
 
+
+enum {
+    FDUnknownSize = NSUIntegerMax
+};
+
 // Parse a positive integer and locate the pointer to the first non-figure character in the string
 static inline NSUInteger parseInt(const char **tmp)
 {
@@ -72,7 +77,7 @@ static inline NSUInteger sizeOfType(const char *type)
             // Get size of each element
             NSUInteger size = sizeOfType(tmp);
             
-            return (size != NSUIntegerMax ? size*length : NSUIntegerMax);
+            return (size != FDUnknownSize ? size*length : FDUnknownSize);
         }
             // Unknown/unimplemented
         case '*':
@@ -84,7 +89,7 @@ static inline NSUInteger sizeOfType(const char *type)
         case '^':
         case '?':
         default:
-            return NSUIntegerMax;
+            return FDUnknownSize;
             
     }
 }
