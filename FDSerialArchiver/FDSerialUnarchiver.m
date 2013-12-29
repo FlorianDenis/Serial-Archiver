@@ -276,9 +276,13 @@
 
 +(id)unarchiveObjectWithData:(NSData *)data
 {
-    FDSerialUnarchiver *unarchiver = [[FDSerialUnarchiver alloc] initForReadingWithData:data];
+    @autoreleasepool {
+        
+        FDSerialUnarchiver *unarchiver = [[FDSerialUnarchiver alloc] initForReadingWithData:data];
+        return [unarchiver decodeRootObject];
+
+    }
     
-    return [unarchiver decodeRootObject];
 }
 
 

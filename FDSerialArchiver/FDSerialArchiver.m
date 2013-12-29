@@ -254,10 +254,14 @@
 
 +(NSData *)archivedDataWithRootObject:(id)rootObject
 {
-    FDSerialArchiver *archiver = [[FDSerialArchiver alloc] init];
+    @autoreleasepool {
+        
+        FDSerialArchiver *archiver = [[FDSerialArchiver alloc] init];
+        [archiver encodeRootObject:rootObject];
+        return archiver.data;
+
+    }
     
-    [archiver encodeRootObject:rootObject];
-    return archiver.data;
 }
 
 
