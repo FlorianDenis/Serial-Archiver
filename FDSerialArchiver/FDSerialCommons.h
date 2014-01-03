@@ -9,6 +9,42 @@
 #ifndef FDSerialArchiverDemo_FDSerialCommons_h
 #define FDSerialArchiverDemo_FDSerialCommons_h
 
+#pragma mark - Logging
+
+#if FD_SERIAL_ARCHIVER_DEBUG
+static unsigned logIndentLevel = 0;
+#endif
+
+static inline void FDLog(NSString * format, ...)
+{
+#if FD_SERIAL_ARCHIVER_DEBUG
+    va_list args;
+    va_start(args, format);
+    
+    NSString * indentString = [@"" stringByPaddingToLength:(2*logIndentLevel) withString:@" " startingAtIndex:0];
+    
+    NSLogv([NSString stringWithFormat:@"%@%@", indentString, format], args);
+    
+    va_end(args);
+#endif
+}
+
+static inline void FDLogIndent(NSString * format, ...){
+#if FD_SERIAL_ARCHIVER_DEBUG
+    FDLog(format);
+    logIndentLevel++;
+#endif
+}
+
+static inline void FDLogOutdent(NSString * format, ...) {
+#if FD_SERIAL_ARCHIVER_DEBUG
+    logIndentLevel--;
+    FDLog(format);
+#endif
+}
+
+
+#pragma mark - Misc functions used in archiver & unarchiver
 
 enum {
     FDUnknownSize = NSUIntegerMax

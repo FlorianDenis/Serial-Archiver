@@ -67,6 +67,8 @@
 
 -(void)_appendCString:(const char*)cString
 {
+    FDLog(@"Appending C-string: %s",cString);
+    
     NSUInteger length = strlen(cString);
     [self _appendBytes:cString length:length+1];
     
@@ -74,6 +76,8 @@
 
 -(void)_appendData:(NSData*)data
 {
+    FDLog(@"Appending NSData: %@",data);
+    
     uint32_t length = (uint32_t)data.length;
     
     [self _appendBytes:&length length:sizeof(uint32_t)];
@@ -82,11 +86,16 @@
 
 -(void)_appendReference:(const void *)reference
 {
+    FDLog(@"Appending Reference: %p",reference);
+    
 	[self _appendBytes:&reference length:sizeof(void*)];
 }
 
 -(void)_appendClass:(Class)class
 {
+    FDLog(@"Appending class: %@",class);
+    FDLogIndent(@"{");
+    
     // NSObject is always nil
     if (class == [NSObject class]) {
         [self _appendReference:nil];
@@ -102,10 +111,16 @@
         [_classes addObject:class];
         [self _appendCString:[NSStringFromClass(class) cStringUsingEncoding:NSASCIIStringEncoding]];
     }
+    
+    FDLogOutdent(@"}");
 }
 
 -(void)_appendObject:(const id)object
 {
+    FDLog(@"Appending object: %@",object);
+    FDLogIndent(@"{");
+
+    
     // Append object reference
     [self _appendReference:(__bridge const void *)(object)];
     
@@ -120,11 +135,16 @@
         [self _appendClass:[object classForCoder]];
         [object encodeWithCoder:self];
     }
+    
+    FDLogOutdent(@"}");
 
 }
 
 -(void)_appendArrayOfType:(const char*)type at:(const void *)addr
 {
+    FDLog(@"Appending array of type: %s",type);
+    FDLogIndent(@"[");
+    
     const char *tmp = type+1; // (skip [
     
     // Get number of elements
@@ -147,6 +167,8 @@
         [self encodeValueOfObjCType:tmp at:src];
         src += size;
     }
+    
+    FDLogOutdent(@"]");
     
 }
 
@@ -181,6 +203,7 @@
         case 'f':
             // double
         case 'd':
+            FDLog(@"Appending value of type %c",*type);
             [self _appendBytes:addr length:sizeOfType(type)];
             break;
             

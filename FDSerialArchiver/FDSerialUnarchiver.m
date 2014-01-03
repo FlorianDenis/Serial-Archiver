@@ -64,6 +64,8 @@
     char *string = (char*)malloc((length+1)*sizeof(char));
     [self _extractBytesTo:string length:length+1];
     
+    FDLog(@"Extracted C-String: %s",string);
+    
     return string;
     
 }
@@ -76,6 +78,8 @@
     NSData *data = [NSData dataWithBytes:_bytes length:length];
     _bytes += length;
     
+    FDLog(@"Extracted NSData: %@",data);
+    
     return data;
     
 }
@@ -84,12 +88,17 @@
 {
     const void * reference;
     [self _extractBytesTo:&reference length:sizeof(void*)];
+    
+    FDLog(@"Extracted reference: %p",reference);
+    
     return reference;
 }
 
 
 -(Class)_extractClass
 {
+    FDLog(@"Extracting class");
+    FDLogIndent(@"{");
     
     // Lookup class reference
     __unsafe_unretained id reference = (__bridge id)[self _extractReference];
@@ -112,12 +121,21 @@
         [_classes setObject:class forKey:reference];
     }
     
-    return [_classes objectForKey:reference];
+    Class class = [_classes objectForKey:reference];
+    
+    FDLogOutdent(@"}");
+    FDLog(@"Extracted class %@", class);
+    
+    return class;
     
 }
 
 -(id)_extractObject
 {
+    
+    FDLog(@"Extracting object");
+    FDLogIndent(@"{");
+
     __unsafe_unretained id objectReference = (__bridge id)[self _extractReference];
     
     if (!objectReference)
@@ -135,12 +153,20 @@
         [_objects setObject:object forKey:objectReference];
     }
     
-    return [_objects objectForKey:objectReference];
+    id object = [_objects objectForKey:objectReference];
+    
+    FDLogOutdent(@"}");
+    FDLog(@"Extracted object %@", object);
+    
+    return object;
     
 }
 
 -(void)_extractArrayOfType:(const char*)type to:(void *)addr
 {
+    FDLog(@"Extracting array of type: %s",type);
+    FDLogIndent(@"[");
+    
     const char *tmp = type+1; // (skip [
 
     // Get number of elements
@@ -163,6 +189,8 @@
         [self decodeValueOfObjCType:tmp at:dst];
         dst += size;
     }
+    
+    FDLogOutdent(@"]");
     
 }
 
@@ -199,6 +227,7 @@
         case 'f':
             // double
         case 'd':
+            FDLog(@"Extracting value of type %c",*type);
             [self _extractBytesTo:data length:sizeOfType(type)];
             break;
             
