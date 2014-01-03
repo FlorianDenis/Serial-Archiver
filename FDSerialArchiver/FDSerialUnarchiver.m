@@ -37,8 +37,8 @@
         _bytes = [data bytes];
         
         // Keep track of reference->object mapping
-        _classes = [NSMapTable weakToStrongObjectsMapTable];
-        _objects = [NSMapTable weakToStrongObjectsMapTable];
+        _classes = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsOpaquePersonality valueOptions:NSPointerFunctionsStrongMemory];
+        _objects = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsOpaquePersonality valueOptions:NSPointerFunctionsStrongMemory];
     }
     return self;
 }
