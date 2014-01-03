@@ -170,9 +170,9 @@
     id obj = @42;
     
     NSDictionary* obj1 = @{
-                           @"Foo": @"Bar",
-                           @"Bar": obj,
-                           @"Test":@[@41,obj,@42,@43],
+                           @"Fo": @"oB",
+                           @"ar": obj,
+                           @"Test":@[@41,obj,@43,@44],
                            @1337: [NSDate date]
                            };
     
@@ -180,7 +180,7 @@
     NSDictionary* obj2 = [FDSerialUnarchiver unarchiveObjectWithData:data];
     
     // This needs to be a pointer equality
-    XCTAssert( obj2[@"Bar"] == obj2[@"Test"][1] );
+    XCTAssert( obj2[@"ar"] == obj2[@"Test"][1] );
 
 }
 
@@ -259,8 +259,8 @@
     NSData *data2 = [NSKeyedArchiver archivedDataWithRootObject:dict];
     
     NSLog(@"========================");
-    NSLog(@"FDSerialArchiver : %dkB",data1.length>>10);
-    NSLog(@"NSKeyedArchiver : %dkB",data2.length>>10);
+    NSLog(@"FDSerialArchiver : %lukB",(unsigned long)(data1.length>>10));
+    NSLog(@"NSKeyedArchiver : %lukB",(unsigned long)(data2.length>>10));
     NSLog(@"========================");
     
     XCTAssert(data1.length < data2.length);
