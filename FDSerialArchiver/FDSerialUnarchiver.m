@@ -107,22 +107,21 @@
     if (!reference)
         return [NSObject class];
     
+    Class class;
+    
     // Do we already know that one ?
-    if (![_classes objectForKey:reference])
+    if (!(class = [_classes objectForKey:reference]))
     {
         // If not, then the name should follow
-        
         char *classCName = [self _extractCString];
         NSString *className = [NSString stringWithCString:classCName encoding:NSASCIIStringEncoding];
         free(classCName);
         
-        Class class = NSClassFromString(className);
+        class = NSClassFromString(className);
         
         [_classes setObject:class forKey:reference];
     }
-    
-    Class class = [_classes objectForKey:reference];
-    
+        
     FDLogOutdent(@"}");
     FDLog(@"Extracted class %@", class);
     
@@ -143,17 +142,17 @@
         return nil;
     }
     
+    id object;
+    
     // Do we already know that one ?
-    if (![_objects objectForKey:objectReference])
+    if (!(object = [_objects objectForKey:objectReference]))
     {
         // If not, then the class & enconding should follow
         Class objectClass = [self _extractClass];
-        id object = [[objectClass alloc] initWithCoder:self];
+        object = [[objectClass alloc] initWithCoder:self];
         
         [_objects setObject:object forKey:objectReference];
     }
-    
-    id object = [_objects objectForKey:objectReference];
     
     FDLogOutdent(@"}");
     FDLog(@"Extracted object %@", object);
@@ -238,9 +237,8 @@
             
             
             // c-string (zero terminated)
-        case '*':{
+        case '*':
             *(char **)data = [self _extractCString];
-        }
             break;
             
             // Obj-C object

@@ -131,9 +131,10 @@
     // If this object was not encoded yet, encode it and its class
     if (![_objects containsObject:object])
     {
-        [_objects addObject:object];
         [self _appendClass:[object classForCoder]];
         [object encodeWithCoder:self];
+        
+        [_objects addObject:object];
     }
     
     FDLogOutdent(@"}");
@@ -219,10 +220,8 @@
             
             
             // Obj-C object
-        case '@':{
-            id object = *(const id *)addr;
-            [self _appendObject:object];
-        }
+        case '@':
+            [self _appendObject:*(const id *)addr];
             break;
             
             
