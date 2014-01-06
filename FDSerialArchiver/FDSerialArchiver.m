@@ -40,8 +40,8 @@
         _position = 0;
 
         // hashtables filled during encoding used to keep info on what was already encoded
-        _classes = [NSHashTable hashTableWithOptions:NSHashTableStrongMemory];      // class name will be encoded on the first time the class is met
-        _objects = [NSHashTable hashTableWithOptions:NSHashTableStrongMemory];      // object will be encoded on the first time the object is met
+        _classes = [NSHashTable hashTableWithOptions:NSPointerFunctionsOpaquePersonality];      // class name will be encoded on the first time the class is met
+        _objects = [NSHashTable hashTableWithOptions:NSPointerFunctionsOpaquePersonality];      // object will be encoded on the first time the object is met
     }
     return self;
 }

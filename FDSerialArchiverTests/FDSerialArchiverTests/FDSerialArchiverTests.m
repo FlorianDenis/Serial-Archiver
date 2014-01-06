@@ -186,7 +186,7 @@
 
 #pragma mark - Performances
 
--(void)testSpeed
+-(void)testSpeedEncoding
 {
     
     // Build a big NSDictionnary
