@@ -12,5 +12,7 @@
 
 -(void)archiveData;
 -(void)unarchiveData;
+-(void)stressTestArchive;
+-(void)stressTestUnarchive;
 
 @end

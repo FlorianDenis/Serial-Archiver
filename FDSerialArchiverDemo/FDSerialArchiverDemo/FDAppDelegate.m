@@ -25,6 +25,10 @@
     // Unarchive some stuff too
     [archivingController unarchiveData];
     
+    // Stress-test
+    [archivingController stressTestArchive];
+    [archivingController stressTestUnarchive];
+    
     return YES;
 }
 

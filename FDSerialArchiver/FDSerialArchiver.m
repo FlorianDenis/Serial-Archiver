@@ -145,7 +145,7 @@
     FDLog(@"Appending array of type: %s",type);
     FDLogIndent(@"[");
     
-    const char *tmp = type+1; // (skip [
+    const char *tmp = type+1; // skip [
     
     // Get number of elements
     NSUInteger length = parseInt(&tmp);

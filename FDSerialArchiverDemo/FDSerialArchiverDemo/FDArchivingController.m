@@ -130,4 +130,35 @@
     
 }
 
+-(void)stressTestArchive
+{
+    
+    NSMutableArray *array = [NSMutableArray array];
+    const unsigned N = 100000;
+    
+    for (unsigned i = 0; i < N; ++i){
+        [array addObject:@{@"Test" :  [[FDMockObject alloc] init]}];
+    }
+    
+    
+    NSData *data = [FDSerialArchiver archivedDataWithRootObject:array];
+    NSString *tempFile = [NSTemporaryDirectory() stringByAppendingPathComponent:@"stresstest-archive"];
+    [data writeToFile:tempFile atomically:YES];
+
+    
+}
+
+-(void)stressTestUnarchive
+{
+    NSString *tempFile = [NSTemporaryDirectory() stringByAppendingPathComponent:@"stresstest-archive"];
+    NSData *data = [NSData dataWithContentsOfFile:tempFile];
+    
+    
+    NSArray *obj = [FDSerialUnarchiver unarchiveObjectWithData:data];
+    
+    NSLog(@"%lu",(unsigned long)obj.count);
+
+    
+}
+
 @end
