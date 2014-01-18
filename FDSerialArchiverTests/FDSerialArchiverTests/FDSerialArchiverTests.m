@@ -58,7 +58,7 @@
     
     for (int i = 0; i < N; ++i)
     {
-        char *buffer = malloc(2*M+2);
+        char *buffer = (char*)malloc(2*M+2);
         char *p = buffer;
         
         // Build a randomly long string of figures & then letters
@@ -100,7 +100,7 @@
     XCTAssert( sizeOfType(@encode( long[42]  ))   == sizeof( long[42]   ));
     
     // Nested arrays
-    char *type = @encode(double[42][1337][1]);
+    const char* type = @encode(double[42][1337][1]);
     XCTAssert( sizeOfType(type) == sizeof(double[42][1337][1]) );
     
     // 0-terminated strings
