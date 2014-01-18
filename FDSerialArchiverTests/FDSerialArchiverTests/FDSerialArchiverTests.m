@@ -6,6 +6,9 @@
 //  Copyright (c) 2013 Florian Denis. All rights reserved.
 //
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpedantic"
+
 #import <XCTest/XCTest.h>
 
 #import "FDSerialCommons.h"
@@ -267,3 +270,5 @@
 }
 
 @end
+
+#pragma clang diagnostic pop
