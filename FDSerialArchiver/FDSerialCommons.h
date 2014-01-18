@@ -46,9 +46,8 @@ static inline void FDLogOutdent(NSString * format, ...) {
 
 #pragma mark - Misc functions used in archiver & unarchiver
 
-enum {
-    FDUnknownSize = NSUIntegerMax
-};
+static NSUInteger const FDUnknownSize = NSUIntegerMax;
+
 
 // Parse a positive integer and locate the pointer to the first non-figure character in the string
 static inline NSUInteger parseInt(const char **tmp)
