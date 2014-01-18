@@ -107,25 +107,25 @@
     if (!reference)
         return [NSObject class];
     
-    Class class;
+    Class objectClass;
     
     // Do we already know that one ?
-    if (!(class = [_classes objectForKey:reference]))
+    if (!(objectClass = [_classes objectForKey:reference]))
     {
         // If not, then the name should follow
         char *classCName = [self _extractCString];
         NSString *className = [NSString stringWithCString:classCName encoding:NSASCIIStringEncoding];
         free(classCName);
         
-        class = NSClassFromString(className);
+        objectClass = NSClassFromString(className);
         
-        [_classes setObject:class forKey:reference];
+        [_classes setObject:objectClass forKey:reference];
     }
         
     FDLogOutdent(@"}");
-    FDLog(@"Extracted class %@", class);
+    FDLog(@"Extracted class %@", objectClass);
     
-    return class;
+    return objectClass;
     
 }
 
@@ -295,8 +295,8 @@
 
 -(NSInteger)versionForClassName:(NSString *)className
 {
-    Class class = NSClassFromString(className);
-    return class ? [class version] : NSNotFound;
+    Class objectClass = NSClassFromString(className);
+    return objectClass ? [objectClass version] : NSNotFound;
 }
 
 

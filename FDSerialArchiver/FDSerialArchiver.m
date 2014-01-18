@@ -91,25 +91,25 @@
 	[self _appendBytes:&reference length:sizeof(void*)];
 }
 
--(void)_appendClass:(Class)class
+-(void)_appendClass:(Class)objectClass
 {
-    FDLog(@"Appending class: %@",class);
+    FDLog(@"Appending class: %@",objectClass);
     FDLogIndent(@"{");
     
     // NSObject is always nil
-    if (class == [NSObject class]) {
+    if (objectClass == [NSObject class]) {
         [self _appendReference:nil];
         return;
     }
     
     // Append reference to class
-    [self _appendReference:(__bridge const void *)(class)];
+    [self _appendReference:(__bridge const void *)(objectClass)];
     
     // And append class name if this is the first time it is encountered
-    if (![_classes containsObject:class])
+    if (![_classes containsObject:objectClass])
     {
-        [_classes addObject:class];
-        [self _appendCString:[NSStringFromClass(class) cStringUsingEncoding:NSASCIIStringEncoding]];
+        [_classes addObject:objectClass];
+        [self _appendCString:[NSStringFromClass(objectClass) cStringUsingEncoding:NSASCIIStringEncoding]];
     }
     
     FDLogOutdent(@"}");
@@ -264,8 +264,8 @@
 
 -(NSInteger)versionForClassName:(NSString *)className
 {
-    Class class = NSClassFromString(className);
-    return class ? [class version] : NSNotFound;
+    Class objectClass = NSClassFromString(className);
+    return objectClass ? [objectClass version] : NSNotFound;
 }
 
 #pragma mark - Misc
