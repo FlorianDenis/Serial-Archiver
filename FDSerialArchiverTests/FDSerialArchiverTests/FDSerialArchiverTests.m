@@ -16,11 +16,11 @@
 #import "FDSerialUnarchiver.h"
 
 
-@interface FDSerialArchiverTestsTests : XCTestCase
+@interface FDSerialArchiverTests : XCTestCase
 
 @end
 
-@implementation FDSerialArchiverTestsTests
+@implementation FDSerialArchiverTests
 
 - (void)setUp
 {
