@@ -16,7 +16,7 @@
 
 @interface FDSerialUnarchiver (){
     NSData *_data;              // Reference to the NSData to read
-    const void *_bytes;         // Pointer to the current position in the NSData buffer
+    const char *_bytes;         // Pointer to the current position in the NSData buffer
     
     NSMapTable *_classes;       // Mapping between class references and actual class
     NSMapTable *_objects;       // Mapping between object references and actual objects
@@ -34,7 +34,7 @@
     self = [super init];
     if (self) {
         _data = data;
-        _bytes = [data bytes];
+        _bytes = (const char*)[data bytes];
         
         // Keep track of reference->object mapping
         _classes = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsOpaquePersonality valueOptions:NSPointerFunctionsStrongMemory];
