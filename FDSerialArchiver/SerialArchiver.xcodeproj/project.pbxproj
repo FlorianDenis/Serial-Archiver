@@ -1,0 +1,493 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		1AA9C6F418F59A8D00C3FCFC /* Framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 1AA9C6F518F59A8D00C3FCFC /* Build configuration list for PBXAggregateTarget "Framework" */;
+			buildPhases = (
+				1AA9C6FA18F59AA100C3FCFC /* ShellScript */,
+			);
+			dependencies = (
+				1AA9C6F918F59A9800C3FCFC /* PBXTargetDependency */,
+			);
+			name = Framework;
+			productName = Framework;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		1AA9C6BE18F5985500C3FCFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA9C6BD18F5985500C3FCFC /* Foundation.framework */; };
+		1AA9C6CC18F5985500C3FCFC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA9C6CB18F5985500C3FCFC /* XCTest.framework */; };
+		1AA9C6CD18F5985500C3FCFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA9C6BD18F5985500C3FCFC /* Foundation.framework */; };
+		1AA9C6D218F5985500C3FCFC /* libSerialArchiver.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA9C6BA18F5985500C3FCFC /* libSerialArchiver.a */; };
+		1AA9C6E818F598B500C3FCFC /* FDSerialArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA9C6E418F598B500C3FCFC /* FDSerialArchiver.m */; };
+		1AA9C6E918F598B500C3FCFC /* FDSerialUnarchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA9C6E718F598B500C3FCFC /* FDSerialUnarchiver.m */; };
+		1AA9C6EE18F598D600C3FCFC /* FDSerialArchiverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA9C6EC18F598C800C3FCFC /* FDSerialArchiverTests.m */; };
+		1AA9C6F018F5998600C3FCFC /* FDSerialArchiver.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA9C6E318F598B500C3FCFC /* FDSerialArchiver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1AA9C6F118F5998A00C3FCFC /* FDSerialUnarchiver.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA9C6E618F598B500C3FCFC /* FDSerialUnarchiver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1AA9C6FB18F59AB800C3FCFC /* SerialArchiver.h in Headers */ = {isa = PBXBuildFile; fileRef = 1AA9C6F218F599A600C3FCFC /* SerialArchiver.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1AA9C6D018F5985500C3FCFC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1AA9C6B218F5985500C3FCFC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1AA9C6B918F5985500C3FCFC;
+			remoteInfo = SerialArchiver;
+		};
+		1AA9C6F818F59A9800C3FCFC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1AA9C6B218F5985500C3FCFC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1AA9C6B918F5985500C3FCFC;
+			remoteInfo = SerialArchiver;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1AA9C6B818F5985500C3FCFC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		1AA9C6BA18F5985500C3FCFC /* libSerialArchiver.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSerialArchiver.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1AA9C6BD18F5985500C3FCFC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1AA9C6CA18F5985500C3FCFC /* SerialArchiverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SerialArchiverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1AA9C6CB18F5985500C3FCFC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		1AA9C6E318F598B500C3FCFC /* FDSerialArchiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDSerialArchiver.h; path = FDSerialArchiver/FDSerialArchiver.h; sourceTree = "<group>"; };
+		1AA9C6E418F598B500C3FCFC /* FDSerialArchiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDSerialArchiver.m; path = FDSerialArchiver/FDSerialArchiver.m; sourceTree = "<group>"; };
+		1AA9C6E518F598B500C3FCFC /* FDSerialCommons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDSerialCommons.h; path = FDSerialArchiver/FDSerialCommons.h; sourceTree = "<group>"; };
+		1AA9C6E618F598B500C3FCFC /* FDSerialUnarchiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDSerialUnarchiver.h; path = FDSerialArchiver/FDSerialUnarchiver.h; sourceTree = "<group>"; };
+		1AA9C6E718F598B500C3FCFC /* FDSerialUnarchiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDSerialUnarchiver.m; path = FDSerialArchiver/FDSerialUnarchiver.m; sourceTree = "<group>"; };
+		1AA9C6EB18F598C800C3FCFC /* FDSerialArchiverTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "FDSerialArchiverTests-Info.plist"; path = "FDSerialArchiverTests/FDSerialArchiverTests-Info.plist"; sourceTree = SOURCE_ROOT; };
+		1AA9C6EC18F598C800C3FCFC /* FDSerialArchiverTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FDSerialArchiverTests.m; path = FDSerialArchiverTests/FDSerialArchiverTests.m; sourceTree = SOURCE_ROOT; };
+		1AA9C6F218F599A600C3FCFC /* SerialArchiver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SerialArchiver.h; path = FDSerialArchiver/SerialArchiver.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1AA9C6B718F5985500C3FCFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1AA9C6BE18F5985500C3FCFC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1AA9C6C718F5985500C3FCFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1AA9C6CC18F5985500C3FCFC /* XCTest.framework in Frameworks */,
+				1AA9C6D218F5985500C3FCFC /* libSerialArchiver.a in Frameworks */,
+				1AA9C6CD18F5985500C3FCFC /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1AA9C6B118F5985500C3FCFC = {
+			isa = PBXGroup;
+			children = (
+				1AA9C6EA18F598B800C3FCFC /* SerialArchiver */,
+				1AA9C6D318F5985500C3FCFC /* SerialArchiverTests */,
+				1AA9C6BC18F5985500C3FCFC /* Frameworks */,
+				1AA9C6BB18F5985500C3FCFC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1AA9C6BB18F5985500C3FCFC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1AA9C6BA18F5985500C3FCFC /* libSerialArchiver.a */,
+				1AA9C6CA18F5985500C3FCFC /* SerialArchiverTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1AA9C6BC18F5985500C3FCFC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1AA9C6BD18F5985500C3FCFC /* Foundation.framework */,
+				1AA9C6CB18F5985500C3FCFC /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1AA9C6D318F5985500C3FCFC /* SerialArchiverTests */ = {
+			isa = PBXGroup;
+			children = (
+				1AA9C6EC18F598C800C3FCFC /* FDSerialArchiverTests.m */,
+				1AA9C6EB18F598C800C3FCFC /* FDSerialArchiverTests-Info.plist */,
+			);
+			path = SerialArchiverTests;
+			sourceTree = "<group>";
+		};
+		1AA9C6EA18F598B800C3FCFC /* SerialArchiver */ = {
+			isa = PBXGroup;
+			children = (
+				1AA9C6F218F599A600C3FCFC /* SerialArchiver.h */,
+				1AA9C6E518F598B500C3FCFC /* FDSerialCommons.h */,
+				1AA9C6E318F598B500C3FCFC /* FDSerialArchiver.h */,
+				1AA9C6E418F598B500C3FCFC /* FDSerialArchiver.m */,
+				1AA9C6E618F598B500C3FCFC /* FDSerialUnarchiver.h */,
+				1AA9C6E718F598B500C3FCFC /* FDSerialUnarchiver.m */,
+			);
+			name = SerialArchiver;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1AA9C6EF18F5997900C3FCFC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1AA9C6FB18F59AB800C3FCFC /* SerialArchiver.h in Headers */,
+				1AA9C6F018F5998600C3FCFC /* FDSerialArchiver.h in Headers */,
+				1AA9C6F118F5998A00C3FCFC /* FDSerialUnarchiver.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		1AA9C6B918F5985500C3FCFC /* SerialArchiver */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1AA9C6DD18F5985500C3FCFC /* Build configuration list for PBXNativeTarget "SerialArchiver" */;
+			buildPhases = (
+				1AA9C6B618F5985500C3FCFC /* Sources */,
+				1AA9C6B718F5985500C3FCFC /* Frameworks */,
+				1AA9C6B818F5985500C3FCFC /* CopyFiles */,
+				1AA9C6EF18F5997900C3FCFC /* Headers */,
+				1AA9C6F318F59A4800C3FCFC /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SerialArchiver;
+			productName = SerialArchiver;
+			productReference = 1AA9C6BA18F5985500C3FCFC /* libSerialArchiver.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		1AA9C6C918F5985500C3FCFC /* SerialArchiverTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1AA9C6E018F5985500C3FCFC /* Build configuration list for PBXNativeTarget "SerialArchiverTests" */;
+			buildPhases = (
+				1AA9C6C618F5985500C3FCFC /* Sources */,
+				1AA9C6C718F5985500C3FCFC /* Frameworks */,
+				1AA9C6C818F5985500C3FCFC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1AA9C6D118F5985500C3FCFC /* PBXTargetDependency */,
+			);
+			name = SerialArchiverTests;
+			productName = SerialArchiverTests;
+			productReference = 1AA9C6CA18F5985500C3FCFC /* SerialArchiverTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1AA9C6B218F5985500C3FCFC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = FD;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Florian Denis";
+			};
+			buildConfigurationList = 1AA9C6B518F5985500C3FCFC /* Build configuration list for PBXProject "SerialArchiver" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1AA9C6B118F5985500C3FCFC;
+			productRefGroup = 1AA9C6BB18F5985500C3FCFC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1AA9C6B918F5985500C3FCFC /* SerialArchiver */,
+				1AA9C6C918F5985500C3FCFC /* SerialArchiverTests */,
+				1AA9C6F418F59A8D00C3FCFC /* Framework */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1AA9C6C818F5985500C3FCFC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1AA9C6F318F59A4800C3FCFC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh A \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"";
+		};
+		1AA9C6FA18F59AA100C3FCFC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nlipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1AA9C6B618F5985500C3FCFC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1AA9C6E918F598B500C3FCFC /* FDSerialUnarchiver.m in Sources */,
+				1AA9C6E818F598B500C3FCFC /* FDSerialArchiver.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1AA9C6C618F5985500C3FCFC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1AA9C6EE18F598D600C3FCFC /* FDSerialArchiverTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1AA9C6D118F5985500C3FCFC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1AA9C6B918F5985500C3FCFC /* SerialArchiver */;
+			targetProxy = 1AA9C6D018F5985500C3FCFC /* PBXContainerItemProxy */;
+		};
+		1AA9C6F918F59A9800C3FCFC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1AA9C6B918F5985500C3FCFC /* SerialArchiver */;
+			targetProxy = 1AA9C6F818F59A9800C3FCFC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1AA9C6DB18F5985500C3FCFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1AA9C6DC18F5985500C3FCFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1AA9C6DE18F5985500C3FCFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/SerialArchiver.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		1AA9C6DF18F5985500C3FCFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/SerialArchiver.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		1AA9C6E118F5985500C3FCFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "FDSerialArchiverTests/FDSerialArchiverTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		1AA9C6E218F5985500C3FCFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = "FDSerialArchiverTests/FDSerialArchiverTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+		1AA9C6F618F59A8D00C3FCFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1AA9C6F718F59A8D00C3FCFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1AA9C6B518F5985500C3FCFC /* Build configuration list for PBXProject "SerialArchiver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1AA9C6DB18F5985500C3FCFC /* Debug */,
+				1AA9C6DC18F5985500C3FCFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1AA9C6DD18F5985500C3FCFC /* Build configuration list for PBXNativeTarget "SerialArchiver" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1AA9C6DE18F5985500C3FCFC /* Debug */,
+				1AA9C6DF18F5985500C3FCFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1AA9C6E018F5985500C3FCFC /* Build configuration list for PBXNativeTarget "SerialArchiverTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1AA9C6E118F5985500C3FCFC /* Debug */,
+				1AA9C6E218F5985500C3FCFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1AA9C6F518F59A8D00C3FCFC /* Build configuration list for PBXAggregateTarget "Framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1AA9C6F618F59A8D00C3FCFC /* Debug */,
+				1AA9C6F718F59A8D00C3FCFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1AA9C6B218F5985500C3FCFC /* Project object */;
+}

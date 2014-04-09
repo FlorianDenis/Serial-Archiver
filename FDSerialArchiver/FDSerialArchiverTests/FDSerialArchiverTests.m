@@ -233,7 +233,7 @@
     }
     NSLog(@"==========================");
 
-    XCTAssert(dt1 < dt2);
+    XCTAssert(dt1 <= dt2);
 
 }
 
