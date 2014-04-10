@@ -6,6 +6,9 @@
 //  Copyright (c) 2013 Florian Denis. All rights reserved.
 //
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wpedantic"
+
 #import <XCTest/XCTest.h>
 
 #import "FDSerialCommons.h"
@@ -13,11 +16,11 @@
 #import "FDSerialUnarchiver.h"
 
 
-@interface FDSerialArchiverTestsTests : XCTestCase
+@interface FDSerialArchiverTests : XCTestCase
 
 @end
 
-@implementation FDSerialArchiverTestsTests
+@implementation FDSerialArchiverTests
 
 - (void)setUp
 {
@@ -55,7 +58,7 @@
     
     for (int i = 0; i < N; ++i)
     {
-        char *buffer = malloc(2*M+2);
+        char *buffer = (char*)malloc(2*M+2);
         char *p = buffer;
         
         // Build a randomly long string of figures & then letters
@@ -97,7 +100,7 @@
     XCTAssert( sizeOfType(@encode( long[42]  ))   == sizeof( long[42]   ));
     
     // Nested arrays
-    char *type = @encode(double[42][1337][1]);
+    const char* type = @encode(double[42][1337][1]);
     XCTAssert( sizeOfType(type) == sizeof(double[42][1337][1]) );
     
     // 0-terminated strings
@@ -230,7 +233,7 @@
     }
     NSLog(@"==========================");
 
-    XCTAssert(dt1 < dt2);
+    XCTAssert(dt1 <= dt2);
 
 }
 
@@ -267,3 +270,5 @@
 }
 
 @end
+
+#pragma clang diagnostic pop
