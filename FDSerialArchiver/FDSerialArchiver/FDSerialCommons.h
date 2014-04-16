@@ -114,6 +114,10 @@ static inline NSUInteger sizeOfType(const char *type)
             
             return (size != FDUnknownSize ? size*length : FDUnknownSize);
         }
+            
+        case '^':
+            return sizeof(void*);
+            
             // Unknown/unimplemented
         case '*':
         case '#':
@@ -121,7 +125,6 @@ static inline NSUInteger sizeOfType(const char *type)
         case '{':
         case '(':
         case 'b':
-        case '^':
         case '?':
         default:
             return FDUnknownSize;

@@ -88,7 +88,7 @@
 {
     FDLog(@"Appending Reference: %p",reference);
     
-	[self _appendBytes:&reference length:sizeof(void*)];
+	[self _appendBytes:&reference length:sizeOfType("^")];
 }
 
 -(void)_appendClass:(Class)objectClass

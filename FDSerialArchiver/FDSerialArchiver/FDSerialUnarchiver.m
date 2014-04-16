@@ -73,7 +73,7 @@
 -(NSData*)_extractData
 {
     uint32_t length;
-    [self _extractBytesTo:&length length:4];
+    [self _extractBytesTo:&length length:sizeof(uint32_t)];
     
     NSData *data = [NSData dataWithBytes:_bytes length:length];
     _bytes += length;
@@ -87,7 +87,7 @@
 -(const void *)_extractReference
 {
     const void * reference;
-    [self _extractBytesTo:&reference length:sizeof(void*)];
+    [self _extractBytesTo:&reference length:sizeOfType("^")];
     
     FDLog(@"Extracted reference: %p",reference);
     
