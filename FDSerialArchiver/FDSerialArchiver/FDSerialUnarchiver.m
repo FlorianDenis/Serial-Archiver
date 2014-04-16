@@ -199,8 +199,8 @@
 -(void)_cannotDecodeType:(const char *)type
 {
     
-    @throw [NSException exceptionWithName:@"ISUBinaryUnarchiverCannotDecodeException"
-                                   reason:[NSString stringWithFormat:@"ISUBinaryUnarchiver cannot decode type %s",type]
+    @throw [NSException exceptionWithName:@"ISUSerialUnarchiverCannotDecodeException"
+                                   reason:[NSString stringWithFormat:@"ISUSerialUnarchiver cannot decode type %s",type]
                                  userInfo:nil];
 }
 
@@ -279,7 +279,7 @@
     if (strcmp(header, "fdsarchive"))
     {
         free(header);
-        @throw [NSException exceptionWithName:@"ISUBinaryUnarchiverInvalidData"
+        @throw [NSException exceptionWithName:@"ISUSerialUnarchiverInvalidData"
                                        reason:@"Data does not appear to be a valid archive"
                                      userInfo:nil];
     }

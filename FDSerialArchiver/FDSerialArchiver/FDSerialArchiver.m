@@ -177,8 +177,8 @@
 
 -(void)_cannotEncodeType:(const char *)type
 {
-    @throw [NSException exceptionWithName:@"ISUBinaryArchiverCannotEncodeException"
-                                   reason:[NSString stringWithFormat:@"ISUBinaryArchiver cannot encode type %s",type]
+    @throw [NSException exceptionWithName:@"ISUSerialArchiverCannotEncodeException"
+                                   reason:[NSString stringWithFormat:@"ISUSerialArchiver cannot encode type %s",type]
                                  userInfo:nil];
 }
 
