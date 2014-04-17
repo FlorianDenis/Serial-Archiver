@@ -30,7 +30,7 @@
 		1AA9C6BE18F5985500C3FCFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA9C6BD18F5985500C3FCFC /* Foundation.framework */; };
 		1AA9C6CC18F5985500C3FCFC /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA9C6CB18F5985500C3FCFC /* XCTest.framework */; };
 		1AA9C6CD18F5985500C3FCFC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA9C6BD18F5985500C3FCFC /* Foundation.framework */; };
-		1AA9C6D218F5985500C3FCFC /* libserialArchiver.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA9C6BA18F5985500C3FCFC /* libserialArchiver.a */; };
+		1AA9C6D218F5985500C3FCFC /* libSerialArchiver.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AA9C6BA18F5985500C3FCFC /* libSerialArchiver.a */; };
 		1AA9C6E818F598B500C3FCFC /* FDSerialArchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA9C6E418F598B500C3FCFC /* FDSerialArchiver.m */; };
 		1AA9C6E918F598B500C3FCFC /* FDSerialUnarchiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA9C6E718F598B500C3FCFC /* FDSerialUnarchiver.m */; };
 		1AA9C6EE18F598D600C3FCFC /* FDSerialArchiverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AA9C6EC18F598C800C3FCFC /* FDSerialArchiverTests.m */; };
@@ -70,7 +70,7 @@
 
 /* Begin PBXFileReference section */
 		1A7AA6C818FC1631009384D3 /* SerialArchiver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SerialArchiver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1AA9C6BA18F5985500C3FCFC /* libserialArchiver.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libserialArchiver.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		1AA9C6BA18F5985500C3FCFC /* libSerialArchiver.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSerialArchiver.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AA9C6BD18F5985500C3FCFC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1AA9C6CA18F5985500C3FCFC /* SerialArchiverTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SerialArchiverTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AA9C6CB18F5985500C3FCFC /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -105,7 +105,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1AA9C6CC18F5985500C3FCFC /* XCTest.framework in Frameworks */,
-				1AA9C6D218F5985500C3FCFC /* libserialArchiver.a in Frameworks */,
+				1AA9C6D218F5985500C3FCFC /* libSerialArchiver.a in Frameworks */,
 				1AA9C6CD18F5985500C3FCFC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -126,7 +126,7 @@
 		1AA9C6BB18F5985500C3FCFC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1AA9C6BA18F5985500C3FCFC /* libserialArchiver.a */,
+				1AA9C6BA18F5985500C3FCFC /* libSerialArchiver.a */,
 				1AA9C6CA18F5985500C3FCFC /* SerialArchiverTests.xctest */,
 				1A7AA6C818FC1631009384D3 /* SerialArchiver.framework */,
 			);
@@ -224,7 +224,7 @@
 			);
 			name = serialArchiver;
 			productName = SerialArchiver;
-			productReference = 1AA9C6BA18F5985500C3FCFC /* libserialArchiver.a */;
+			productReference = 1AA9C6BA18F5985500C3FCFC /* libSerialArchiver.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		1AA9C6C918F5985500C3FCFC /* SerialArchiverTests */ = {

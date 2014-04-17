@@ -275,6 +275,9 @@
     // Header
     [self _appendCString:"fdsarchive"];
     
+    // Version number
+    [self _appendBytes:&kFDArchiverVersion length:sizeof(version_t)];
+    
     // Root object
     [self encodeObject:rootObject];
     

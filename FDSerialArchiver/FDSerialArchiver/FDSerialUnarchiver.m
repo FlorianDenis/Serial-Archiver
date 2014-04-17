@@ -284,6 +284,16 @@
     }
     free(header);
     
+    // Version number
+    version_t version;
+    [self _extractBytesTo:&version length:sizeof(version_t)];
+    if (version > kFDArchiverVersion)
+    {
+        @throw [NSException exceptionWithName:@"ISUSerialUnarchiverUnknownVersion"
+                                       reason:@"The version of the archive appears to be too recent for us to decode"
+                                     userInfo:nil];
+    }
+    
     
     // Root object
     return [self decodeObject];

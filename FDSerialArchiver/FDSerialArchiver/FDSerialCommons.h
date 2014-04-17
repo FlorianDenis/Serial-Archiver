@@ -43,6 +43,12 @@ static inline void FDLogOutdent(NSString * format, ...) {
 #endif
 }
 
+#pragma mark - Versionning
+
+typedef uint32_t version_t;
+
+static version_t const kFDArchiverVersion = 0;
+
 #pragma mark - References
 
 typedef uint32_t reference_t;
