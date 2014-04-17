@@ -174,7 +174,7 @@
     NSUInteger size = sizeOfType(tmp);
     
     // We don't know the size of that particular element
-    if (length == FDUnknownSize)
+    if (length == kFDUnknownSize)
     {
         [self _cannotDecodeType:tmp];
         return;

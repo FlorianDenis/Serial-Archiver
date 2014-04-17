@@ -49,7 +49,7 @@ typedef uint32_t reference_t;
 
 #pragma mark - Misc functions used in archiver & unarchiver
 
-static NSUInteger const FDUnknownSize = NSUIntegerMax;
+static NSUInteger const kFDUnknownSize = NSUIntegerMax;
 
 
 // Parse a positive integer and locate the pointer to the first non-figure character in the string
@@ -115,7 +115,7 @@ static inline NSUInteger sizeOfType(const char *type)
             // Get size of each element
             NSUInteger size = sizeOfType(tmp);
             
-            return (size != FDUnknownSize ? size*length : FDUnknownSize);
+            return (size != kFDUnknownSize ? size*length : kFDUnknownSize);
         }
             
         case '^':
@@ -130,7 +130,7 @@ static inline NSUInteger sizeOfType(const char *type)
         case 'b':
         case '?':
         default:
-            return FDUnknownSize;
+            return kFDUnknownSize;
             
     }
 }

@@ -104,10 +104,10 @@
     XCTAssert( sizeOfType(type) == sizeof(double[42][1337][1]) );
     
     // 0-terminated strings
-    XCTAssert( sizeOfType(@encode(char*)) == FDUnknownSize );
+    XCTAssert( sizeOfType(@encode(char*)) == kFDUnknownSize );
     
     // Objective-C obj
-    XCTAssert( sizeOfType(@encode(id)) == FDUnknownSize );
+    XCTAssert( sizeOfType(@encode(id)) == kFDUnknownSize );
     
 }
 
