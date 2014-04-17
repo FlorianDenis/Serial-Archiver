@@ -51,13 +51,11 @@ And simply calling the unarchive method
 ## Performance
 
 ## ToDo
-
-Before 0.2
  
- - 32-64 bit archive compatibility
  - Archive versionning
  - Performance chart
  - Endianness
+ - Enable custom relation Class <-> ClassName (`-(void)encodeClassName:(NSString *)trueName intoClassName:(NSString *)inArchiveName` and `- (NSString *)classNameEncodedForTrueClassName:(NSString *)trueName`)
    
 ## License
 
