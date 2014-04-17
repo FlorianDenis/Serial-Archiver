@@ -15,11 +15,10 @@
 
 
 @interface FDSerialUnarchiver (){
-    NSData *_data;              // Reference to the NSData to read
-    const char *_bytes;         // Pointer to the current position in the NSData buffer
+    NSData *_data;                          // Reference to the NSData to read
+    const char *_bytes;                     // Pointer to the current position in the NSData buffer
     
-    NSMapTable *_classes;       // Mapping between class references and actual class
-    NSMapTable *_objects;       // Mapping between object references and actual objects
+    CFMutableDictionaryRef _references;     // Mapping between references and actual item
 }
 
 @end
@@ -37,14 +36,14 @@
         _bytes = (const char*)[data bytes];
         
         // Keep track of reference->object mapping
-        _classes = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsOpaquePersonality valueOptions:NSPointerFunctionsStrongMemory];
-        _objects = [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsOpaquePersonality valueOptions:NSPointerFunctionsStrongMemory];
+        _references = CFDictionaryCreateMutable(NULL, 0, NULL, &kCFTypeDictionaryValueCallBacks);
     }
     return self;
 }
 
 -(void)dealloc
 {
+    CFRelease(_references);
 }
 
 #pragma mark - Core decoding
@@ -73,7 +72,7 @@
 -(NSData*)_extractData
 {
     uint32_t length;
-    [self _extractBytesTo:&length length:4];
+    [self _extractBytesTo:&length length:sizeof(uint32_t)];
     
     NSData *data = [NSData dataWithBytes:_bytes length:length];
     _bytes += length;
@@ -84,12 +83,12 @@
     
 }
 
--(const void *)_extractReference
+-(reference_t)_extractReference
 {
-    const void * reference;
-    [self _extractBytesTo:&reference length:sizeof(void*)];
+    reference_t reference;
+    [self _extractBytesTo:&reference length:sizeof(reference_t)];
     
-    FDLog(@"Extracted reference: %p",reference);
+    FDLog(@"Extracted reference: %d",reference);
     
     return reference;
 }
@@ -101,7 +100,7 @@
     FDLogIndent(@"{");
     
     // Lookup class reference
-    __unsafe_unretained id reference = (__bridge id)[self _extractReference];
+    reference_t reference = [self _extractReference];
     
     // NSObject is always nil
     if (!reference)
@@ -110,7 +109,7 @@
     Class objectClass;
     
     // Do we already know that one ?
-    if (!(objectClass = [_classes objectForKey:reference]))
+    if (!(objectClass = (Class)CFDictionaryGetValue(_references, (const void*)reference)))
     {
         // If not, then the name should follow
         char *classCName = [self _extractCString];
@@ -119,7 +118,7 @@
         
         objectClass = NSClassFromString(className);
         
-        [_classes setObject:objectClass forKey:reference];
+        CFDictionarySetValue(_references, (const void*)reference, (__bridge const void*)objectClass);
     }
         
     FDLogOutdent(@"}");
@@ -135,7 +134,7 @@
     FDLog(@"Extracting object");
     FDLogIndent(@"{");
 
-    __unsafe_unretained id objectReference = (__bridge id)[self _extractReference];
+    reference_t objectReference = [self _extractReference];
     
     if (!objectReference)
     {
@@ -145,13 +144,13 @@
     id object;
     
     // Do we already know that one ?
-    if (!(object = [_objects objectForKey:objectReference]))
+    if (!(object = CFDictionaryGetValue(_references, (const void*)objectReference)))
     {
         // If not, then the class & enconding should follow
         Class objectClass = [self _extractClass];
         object = [[objectClass alloc] initWithCoder:self];
         
-        [_objects setObject:object forKey:objectReference];
+        CFDictionarySetValue(_references, (const void*)objectReference, (__bridge const void*)object);
     }
     
     FDLogOutdent(@"}");
@@ -175,7 +174,7 @@
     NSUInteger size = sizeOfType(tmp);
     
     // We don't know the size of that particular element
-    if (length == FDUnknownSize)
+    if (length == kFDUnknownSize)
     {
         [self _cannotDecodeType:tmp];
         return;
@@ -199,8 +198,8 @@
 -(void)_cannotDecodeType:(const char *)type
 {
     
-    @throw [NSException exceptionWithName:@"ISUBinaryUnarchiverCannotDecodeException"
-                                   reason:[NSString stringWithFormat:@"ISUBinaryUnarchiver cannot decode type %s",type]
+    @throw [NSException exceptionWithName:@"ISUSerialUnarchiverCannotDecodeException"
+                                   reason:[NSString stringWithFormat:@"ISUSerialUnarchiver cannot decode type %s",type]
                                  userInfo:nil];
 }
 
@@ -279,11 +278,21 @@
     if (strcmp(header, "fdsarchive"))
     {
         free(header);
-        @throw [NSException exceptionWithName:@"ISUBinaryUnarchiverInvalidData"
+        @throw [NSException exceptionWithName:@"ISUSerialUnarchiverInvalidData"
                                        reason:@"Data does not appear to be a valid archive"
                                      userInfo:nil];
     }
     free(header);
+    
+    // Version number
+    version_t version;
+    [self _extractBytesTo:&version length:sizeof(version_t)];
+    if (version > kFDArchiverVersion)
+    {
+        @throw [NSException exceptionWithName:@"ISUSerialUnarchiverUnknownVersion"
+                                       reason:@"The version of the archive appears to be too recent for us to decode"
+                                     userInfo:nil];
+    }
     
     
     // Root object
