@@ -15,13 +15,15 @@
 
 
 @interface FDSerialArchiver (){
-    NSMutableData *_data;   // Buffer containing the data written so far
+    NSMutableData *_data;                   // Buffer containing the data written so far
     
-    char *_bytes;           // We don't use appendData on _data, instead we manage a pointer to the buffer
-    size_t _position;       // and the position in this buffer by ourselves
+    char *_bytes;                           // We don't use appendData on _data, instead we manage a pointer to the buffer
+    size_t _position;                       // and the position in this buffer by ourselves
     
-    NSHashTable *_classes;  // Keep a memory of classes already encoded (avoid duplication of information)
-    NSHashTable *_objects;  // Keep a memory of objects already encoded (handle object relationship)
+    reference_t _currentRef;                // The current max object/class reference used
+    
+    CFMutableDictionaryRef _references;     // The relationships between objects and their encoded references
+
 }
 @end
 
@@ -40,14 +42,32 @@
         _position = 0;
 
         // hashtables filled during encoding used to keep info on what was already encoded
-        _classes = [NSHashTable hashTableWithOptions:NSPointerFunctionsOpaquePersonality];      // class name will be encoded on the first time the class is met
-        _objects = [NSHashTable hashTableWithOptions:NSPointerFunctionsOpaquePersonality];      // object will be encoded on the first time the object is met
+        _currentRef = 0;
+        _references = CFDictionaryCreateMutable(NULL, 0, NULL, NULL);
+        
     }
     return self;
 }
 
 - (void)dealloc
 {
+    CFRelease(_references);
+}
+
+#pragma mark - Reference 
+
+-(reference_t)_referenceForItem:(const void *)item shouldEncode:(BOOL*)shouldEncode
+{
+    reference_t reference = 0;
+    
+    if (item && !(reference  = (reference_t)CFDictionaryGetValue(_references, item))){
+        *shouldEncode = YES;
+        reference = ++_currentRef;
+        CFDictionarySetValue(_references, item, (const void*)reference);
+    }
+    
+    return reference;
+
 }
 
 #pragma mark - Core Encoding
@@ -84,31 +104,34 @@
     [self _appendBytes:data.bytes length:length];
 }
 
--(void)_appendReference:(const void *)reference
+-(void)_appendReference:(reference_t)reference
 {
-    FDLog(@"Appending Reference: %p",reference);
+
+    FDLog(@"Appending Reference : %d",reference);
     
-	[self _appendBytes:&reference length:sizeOfType("^")];
+	[self _appendBytes:&reference length:sizeof(reference_t)];
 }
 
--(void)_appendClass:(Class)objectClass
+-(void)_appendClass:(const Class)objectClass
 {
     FDLog(@"Appending class: %@",objectClass);
     FDLogIndent(@"{");
     
-    // NSObject is always nil
+    // NSObject is always 0
     if (objectClass == [NSObject class]) {
-        [self _appendReference:nil];
+        [self _appendReference:0];
         return;
     }
     
+    BOOL shouldEncode = NO;
+    reference_t reference = [self _referenceForItem:(__bridge const void *)objectClass shouldEncode:&shouldEncode];
+    
     // Append reference to class
-    [self _appendReference:(__bridge const void *)(objectClass)];
+    [self _appendReference:reference];
     
     // And append class name if this is the first time it is encountered
-    if (![_classes containsObject:objectClass])
+    if (shouldEncode)
     {
-        [_classes addObject:objectClass];
         [self _appendCString:[NSStringFromClass(objectClass) cStringUsingEncoding:NSASCIIStringEncoding]];
     }
     
@@ -120,21 +143,18 @@
     FDLog(@"Appending object: %@",object);
     FDLogIndent(@"{");
 
-    
+    BOOL shouldEncode = NO;
+    reference_t reference = [self _referenceForItem:(__bridge const void *)object shouldEncode:&shouldEncode];
+
     // Append object reference
-    [self _appendReference:(__bridge const void *)(object)];
-    
-    // If object was nil, no need to go forward
-    if (!object)
-        return;
-    
+    [self _appendReference:reference];
+
     // If this object was not encoded yet, encode it and its class
-    if (![_objects containsObject:object])
+    if (shouldEncode)
     {
         [self _appendClass:[object classForCoder]];
         [object encodeWithCoder:self];
         
-        [_objects addObject:object];
     }
     
     FDLogOutdent(@"}");

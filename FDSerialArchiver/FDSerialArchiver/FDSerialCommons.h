@@ -43,6 +43,9 @@ static inline void FDLogOutdent(NSString * format, ...) {
 #endif
 }
 
+#pragma mark - References
+
+typedef uint32_t reference_t;
 
 #pragma mark - Misc functions used in archiver & unarchiver
 
